@@ -4,9 +4,6 @@ import cv2
 import wda
 import numpy as np
 import time
-import os
-np.set_printoptions(threshold=np.nan)
-
 
 
 SEC_PER_DU = 0.11
@@ -67,14 +64,14 @@ class gameState:
     def start(self,x=207,y=609):
         terminal = False
         reward = 1
-        print 'x=%s,y=%s'%(x,y)
+        # print 'x=%s,y=%s'%(x,y)
         self.sess.tap(x=x, y=y)
         img = cv2.imread('image/jump_tmp.png')
         # print img.shape
         pos = self.find_head(img)
         if max(pos) == 0:
             terminal = True
-            reward = 0
+            reward = -1
 
         x_t = cv2.cvtColor(cv2.resize(img, (84, 84)), cv2.COLOR_BGR2GRAY)
         s_t = x_t[:, :, np.newaxis]

@@ -1,10 +1,7 @@
 import tensorflow as tf
-import cv2
-import sys
 import random
 import numpy as np
 from collections import deque
-import time
 import game_state as game
 
 
